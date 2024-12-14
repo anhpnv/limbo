@@ -312,7 +312,10 @@ fn query(
                             match value {
                                 Value::Null => print!(""),
                                 Value::Integer(i) => print!("{}", i),
-                                Value::Float(f) => print!("{:?}", f),
+                                Value::Float(f) => {
+                                    let f32_value: f32 = *f as f32;
+                                    print!("{:?}", f32_value);
+                                }
                                 Value::Text(s) => print!("{}", s),
                                 Value::Blob(b) => {
                                     print!("{}", String::from_utf8_lossy(b))
